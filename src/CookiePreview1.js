@@ -1,21 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import  {Box, Typography, createStyles,makeStyles } from '@material-ui/core'
 
 
-const CookiePreview1 = () =>{
+const CookiePreview1 = (props) =>{
+  const {activePanel, activePanelHandler} = props
   const classes = useStyles()
+  // const [activePanel, setActivePanel] = useState(0)
+
+  // const handler1 = ({}) =>{
+  //   setActivePanel(1)
+  // }
+
   return(
-    <div>
-      <div style={{display:'flex', alignItem:'center', justifyContent: 'space-between'}}>
+    <div className={activePanel===0?`${classes.showPanel} ${classes.mainBoxStyle}`:classes.hidePanel1} style={{overflow:'hidden'}}>
+      <div  style={{display:'flex', alignItem:'center', justifyContent: 'space-between'}} >
         <p className={classes.upperLine}>Can we store Cookie?</p>
         <a  href={"#"} target="_blank" className={classes.upperLine}>Inf</a>
       </div>
       <p className={classes.middleLine}>
         These will be used to power trialf and Marketing.
       </p>
-      <div style={{marginTop:'36px'}}>
-        <div style={{display:'flex', justifyContent:'space-between'}}>
-          <button  className={`${classes.generalBtnStyle} ${classes.leftBtn}`}>
+      <div>
+        <div style={{display:'flex', justifyContent:'space-between',marginTop:'36px'}}>
+          <button onClick={()=>activePanelHandler(1)}  className={`${classes.generalBtnStyle} ${classes.leftBtn}`}>
             Customize
           </button>
           <div style={{display:'flex'}}>
@@ -31,6 +38,31 @@ const CookiePreview1 = () =>{
 
 const useStyles = makeStyles(() =>
 createStyles({
+  hidePanel1:{
+    transform:'translateX(-350px)',
+    transformOrigin:'left',
+    transition:'transform 0.3s',
+    overflow:'hidden',
+    width:'350px'
+  },
+  showPanel:{
+    transform:'translateX(0)',
+    transformOrigin:'left',
+    transition:'transform 0.3s',
+    overflow:'hidden'
+  },
+  mainBoxStyle: {
+    display: "flex",
+    flexDirection: "column",
+    width: "315px",
+    boxShadow: "rgba(0, 0, 0, 0.05) 0px 4px 14px",
+    position: "relative",
+    padding: "20px 20px 18px 17px",
+    background: "white",
+    borderRadius: "5px",
+    margin: "15px auto",
+    overflowX:'hidden'
+  },
   upperLine:{
     fontStyle: 'normal',
     fontWeight: 'bold',
