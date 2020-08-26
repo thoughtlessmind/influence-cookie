@@ -7,6 +7,7 @@ import {
   Button
 } from "@material-ui/core";
 import CookiePreview1 from "./CookiePreview1";
+import CookiePreview2 from "./CookiePreview2";
 
 const CookiePreviewContainer = (props) => {
 
@@ -17,6 +18,10 @@ const CookiePreviewContainer = (props) => {
     <Box style={{width:'340px', overflow:'hidden', margin:'auto'}}>
       
       <CookiePreview1
+        activePanel={props.activePanel}
+        activePanelHandler={props.activePanelHandler}
+      />
+      <CookiePreview2
         activePanel={props.activePanel}
         activePanelHandler={props.activePanelHandler}
       />
